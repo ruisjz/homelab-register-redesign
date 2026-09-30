@@ -1,0 +1,4 @@
+# Configuração só de ferramentas de desenvolvimento; a aplicação continua sem dependências.
+[tool.black]
+line-length = 110
+target-version = ["py312"]

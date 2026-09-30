@@ -1,0 +1,16 @@
+# P14: só o código da app entra na imagem.
+# Nunca: dados reais, credenciais nem histórico git.
+data/
+.env
+.env.*
+.git/
+.gitignore
+# Ferramentas de desenvolvimento e documentação da entrega
+tests/
+patches-fase*/
+requirements-dev.txt
+pyproject.toml
+.prettierrc.json
+FASE*.md
+**/__pycache__/
+**/*.pyc

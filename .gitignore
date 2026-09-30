@@ -1,0 +1,9 @@
+# Dados reais e credenciais: nunca no git.
+data/
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.pyc

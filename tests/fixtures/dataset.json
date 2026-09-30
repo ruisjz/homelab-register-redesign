@@ -1,0 +1,293 @@
+{
+  "equipment": [
+    {
+      "id": "eq-srv01",
+      "name": "srv01",
+      "hostname": "srv01",
+      "role": "Proxmox",
+      "vendor": "HP",
+      "model": "EliteDesk 800 G3",
+      "serial": "SRV-0001",
+      "location": "Bastidor",
+      "status": "ok",
+      "created": "2025-01-10",
+      "notes": "Nó principal do cluster",
+      "cpu": "i5-7500T",
+      "motherboard": "",
+      "gpu": "",
+      "nic": "",
+      "psu": "",
+      "bios": "",
+      "components": [
+        {
+          "id": "c-srv01-ssd",
+          "name": "SSD sistema",
+          "type": "storage",
+          "model": "Samsung 870 EVO",
+          "serial": "S1SSD",
+          "capacity": "500 GB",
+          "health": "ok",
+          "technology": "SATA SSD"
+        },
+        {
+          "id": "c-srv01-hdd",
+          "name": "HDD dados",
+          "type": "storage",
+          "model": "WD Red",
+          "serial": "WX1HDD",
+          "capacity": "4 TB",
+          "health": "ok",
+          "technology": "HDD"
+        },
+        {
+          "id": "c-srv01-ram1",
+          "name": "DIMM A1",
+          "type": "ram",
+          "model": "Kingston",
+          "serial": "",
+          "capacity": "16 GB",
+          "health": "ok",
+          "technology": "DDR4"
+        },
+        {
+          "id": "c-srv01-ram2",
+          "name": "DIMM A2",
+          "type": "ram",
+          "model": "Kingston",
+          "serial": "",
+          "capacity": "16 GB",
+          "health": "ok",
+          "technology": "DDR4"
+        },
+        {
+          "id": "c-srv01-cpu",
+          "name": "Processador",
+          "type": "cpu",
+          "model": "i5-7500T",
+          "serial": "",
+          "capacity": "",
+          "health": "ok"
+        }
+      ],
+      "maintenance": [
+        {
+          "id": "m-srv01-2",
+          "date": "2026-03-15",
+          "type": "Manutenção preventiva",
+          "description": "Limpeza e testes",
+          "areas": "Interior",
+          "notes": "Tudo OK",
+          "checks": {
+            "Limpeza interna": true,
+            "Ventoinhas": true,
+            "Dissipador": false
+          },
+          "results": {
+            "preventivePlanIds": [
+              "p-limpeza",
+              "p-ram"
+            ],
+            "smartDisks": [
+              {
+                "deviceId": "c-srv01-ssd",
+                "device": "SSD sistema",
+                "health": "98%",
+                "hours": "12000",
+                "errors": "0"
+              },
+              {
+                "deviceId": "c-srv01-hdd",
+                "device": "HDD dados",
+                "health": "100%",
+                "hours": "20000",
+                "errors": "0"
+              }
+            ],
+            "ramRows": [
+              {
+                "ramComponentId": "c-srv01-ram1",
+                "test": "MemTest86",
+                "result": "Passou",
+                "errors": "0"
+              },
+              {
+                "ramComponentId": "c-srv01-ram2",
+                "test": "MemTest86",
+                "result": "Passou",
+                "errors": "0"
+              }
+            ],
+            "tempRows": [
+              {
+                "sensor": "CPU Package",
+                "idle": "38",
+                "load": "71",
+                "value": "71 °C"
+              }
+            ],
+            "testRows": [
+              {
+                "name": "Stress",
+                "tool": "stress-ng",
+                "result": "Estável 30 min"
+              }
+            ]
+          }
+        },
+        {
+          "id": "m-srv01-1",
+          "date": "2025-09-10",
+          "type": "Manutenção corretiva",
+          "description": "Troca de ventoinha",
+          "areas": "Ventilação",
+          "notes": "",
+          "checks": {
+            "Ventoinhas": true
+          },
+          "results": {
+            "preventivePlanIds": [
+              "p-limpeza"
+            ],
+            "smartDisks": [
+              {
+                "deviceId": "c-srv01-ssd",
+                "device": "SSD sistema",
+                "health": "99%",
+                "hours": "8000",
+                "errors": "0"
+              }
+            ],
+            "ramRows": [],
+            "tempRows": [],
+            "testRows": []
+          }
+        }
+      ],
+      "preventivePlanIds": [
+        "p-limpeza",
+        "p-ram"
+      ]
+    },
+    {
+      "id": "eq-nas01",
+      "name": "nas01",
+      "hostname": "nas01",
+      "role": "NAS",
+      "vendor": "",
+      "model": "",
+      "serial": "",
+      "location": "Bastidor",
+      "status": "ok",
+      "created": "2025-01-10",
+      "notes": "",
+      "cpu": "",
+      "motherboard": "",
+      "gpu": "",
+      "nic": "",
+      "psu": "",
+      "bios": "",
+      "components": [
+        {
+          "id": "c-nas01-hdd1",
+          "name": "Disco 1",
+          "type": "storage",
+          "model": "IronWolf",
+          "serial": "ZA1",
+          "capacity": "8 TB",
+          "health": "ok",
+          "technology": "HDD"
+        },
+        {
+          "id": "c-nas01-hdd2",
+          "name": "Disco 2",
+          "type": "storage",
+          "model": "IronWolf",
+          "serial": "ZA2",
+          "capacity": "8 TB",
+          "health": "warn",
+          "technology": "HDD"
+        }
+      ],
+      "maintenance": [
+        {
+          "id": "m-nas01-1",
+          "date": "2026-01-20",
+          "type": "Verificação",
+          "description": "SMART trimestral",
+          "areas": "Discos",
+          "notes": "",
+          "checks": {},
+          "results": {
+            "preventivePlanIds": [
+              "p-limpeza"
+            ],
+            "smartDisks": [
+              {
+                "deviceId": "c-nas01-hdd1",
+                "device": "Disco 1",
+                "health": "100%"
+              },
+              {
+                "deviceId": "c-nas01-hdd2",
+                "device": "Disco 2",
+                "health": "91%",
+                "errors": "8"
+              }
+            ],
+            "ramRows": [],
+            "tempRows": [],
+            "testRows": []
+          }
+        }
+      ],
+      "preventivePlanIds": [
+        "p-limpeza"
+      ]
+    },
+    {
+      "id": "eq-rpi01",
+      "name": "rpi01",
+      "hostname": "rpi01",
+      "role": "DNS",
+      "vendor": "",
+      "model": "",
+      "serial": "",
+      "location": "Bastidor",
+      "status": "offline",
+      "created": "2025-01-10",
+      "notes": "",
+      "cpu": "",
+      "motherboard": "",
+      "gpu": "",
+      "nic": "",
+      "psu": "",
+      "bios": "",
+      "components": [],
+      "maintenance": [],
+      "preventivePlanIds": []
+    }
+  ],
+  "preventivePlans": [
+    {
+      "id": "p-limpeza",
+      "name": "Limpeza interna",
+      "intervalMonths": 6,
+      "active": true,
+      "notes": "Pó e ventoinhas"
+    },
+    {
+      "id": "p-ram",
+      "name": "Testar RAM",
+      "intervalMonths": 12,
+      "active": true,
+      "notes": ""
+    },
+    {
+      "id": "p-inativa",
+      "name": "Plano antigo",
+      "intervalMonths": 24,
+      "active": false,
+      "notes": ""
+    }
+  ]
+}

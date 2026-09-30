@@ -1,0 +1,20 @@
+services:
+  homelab-register:
+    build: .
+    container_name: homelab-register
+    ports:
+      - "5232:5232"
+    environment:
+      AUTH_USERNAME: ${AUTH_USERNAME:?AUTH_USERNAME must be set}
+      AUTH_PASSWORD: ${AUTH_PASSWORD:?AUTH_PASSWORD must be set}
+      COOKIE_SECURE: ${COOKIE_SECURE:-true}
+      TRUSTED_PROXY_IPS: ${TRUSTED_PROXY_IPS:-}
+      # Número de snapshots automáticos guardados em data/backups/ (antes de restore e de migração).
+      AUTO_BACKUPS_KEEP: ${AUTO_BACKUPS_KEEP:-5}
+    volumes:
+      - ./data:/app/data
+    # P15: se o contentor ultrapassar 200 MB (não deve: o objetivo medido é < 60 MB),
+    # o Docker termina-o e volta a arrancá-lo, em vez de o sistema matar processos da VPS.
+    mem_limit: 200m
+    memswap_limit: 200m
+    restart: unless-stopped
